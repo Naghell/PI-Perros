@@ -21,7 +21,7 @@ const getTemperaments = async (req, res) => {
       }
     });
 
-    const temperaments = Array.from(temperamentsSet);
+    const temperaments = Array.from(temperamentsSet).sort();
 
     return res.status(200).json(temperaments);
   } catch (error) {

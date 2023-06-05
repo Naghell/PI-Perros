@@ -6,7 +6,7 @@ const getRazaByID = async (req, res) => {
         const { id } = req.params;
         const { data } = await axios(`${URL}/v1/breeds/${id}`);
 
-        if (!data.name) throw Error(`La raza con la ID: ${id}, no existe.`)
+        if (!data.id) throw Error(`La raza con la ID: ${id} no existe.`)
     
         const raza = {
             id: data.id,

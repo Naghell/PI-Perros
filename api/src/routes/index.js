@@ -14,15 +14,15 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/dogs', (req, res) => {
     getDogs(req, res);
-})
+});
+
+router.get('/dogs/name', (req, res) => {
+    getRazaByName(req, res);
+});
 
 router.get('/dogs/:id', (req, res) => {
     getRazaByID(req, res);
-})
-
-router.get('/dogs/name/:name', (req, res) => {
-    getRazaByName(req, res);
-})
+});
 
 router.get('/temperaments', (req, res) => {
     getTemperaments(req, res);
