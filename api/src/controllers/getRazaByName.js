@@ -1,16 +1,28 @@
 const axios = require('axios');
-const URL = 'https://api.thedogapi.com'
+const { Op } = require('sequelize');
+const { Dog } = require('../db');
+const URL = 'https://api.thedogapi.com';
 
 const getRazaByName = async (req, res) => {
     try {
         const { name } = req.params;
-        const { data } = await axios(`${URL}/v1/breeds/search?q=${name}`);
 
-        if (data.length === 0) {
-            throw Error('Error')
+        const razaAPI = await axios.get(`${URL}/v1/breeds/search?q=${name}`);
+        const razaDB = await Dog.findAll({
+          where: {
+            nombre: {
+              [Op.iLike]: `%${name}%`,
+            },
+          },
+        });
+    
+        const razas = [...razaAPI.data, ...razaDB];
+    
+        if (razas.length === 0) {
+          throw new Error(`No se encontraron razas que coincidan con "${name}".`);
         }
-        return res.status(200).json(data);
- 
+    
+        return res.status(200).json(razas);
     } catch (error) {
         res.status(500).json({error: error.message});
     }

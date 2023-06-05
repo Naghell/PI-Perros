@@ -1,6 +1,7 @@
 const axios = require('axios');
 const URL = 'https://api.thedogapi.com'
 
+
 const getDogs = async (req, res) => {
     try {
         const { data } = await axios.get(`${URL}/v1/breeds`);
