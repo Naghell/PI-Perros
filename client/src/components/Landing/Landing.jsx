@@ -1,17 +1,15 @@
 import styles from './Landing.module.css';
-import { useEffect } from 'react';
+import Login from '../Login/Login';
+import { useState } from 'react';
 
 const Landing = () => {
-    const landingJoin = () => {
-        const audio = new Audio("./intro.mp3");
-        audio.play();
-    }
-
-    return(
-        <main className={styles.landing__background}>
-            <div className={styles.landing__container}>
-                <img alt="Logo" className={styles.landing__image} src='/logo.svg'></img>
-                <button onClick={landingJoin} className={styles.landing__button}>INGRESAR</button>
+    return (
+        <main className={styles.landing__container}>
+            <div className={styles.landing__logo}>
+                <img alt="Logo de PerrAPI" className={styles.landing__image} src='/logo.svg'></img>
+            </div>
+            <div className={styles.landing__form}>
+                <Login/>
             </div>
         </main>
     )

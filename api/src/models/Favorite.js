@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  const Dog = sequelize.define(
-    "Dog",
+  const Favorite = sequelize.define(
+    "Favorite",
     {
       id: {
         type: DataTypes.UUID,
@@ -38,5 +38,5 @@ module.exports = (sequelize) => {
     { timestamps: false }
   );
 
-  return Dog;
+  return Favorite;
 };
