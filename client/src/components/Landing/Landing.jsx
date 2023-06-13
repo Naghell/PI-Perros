@@ -1,6 +1,5 @@
 import styles from './Landing.module.css';
 import Login from '../Login/Login';
-import { useState } from 'react';
 
 const Landing = () => {
     return (
