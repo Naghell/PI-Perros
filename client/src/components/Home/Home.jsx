@@ -1,9 +1,13 @@
 import List from '../List/List';
+import SearchBar from '../SearchBar/SearchBar';
 
 const Home = () => {
 
     return (
-        <List/>
+        <main>
+            <SearchBar />
+            <List />
+        </main>
     )
 };
 

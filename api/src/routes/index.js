@@ -13,16 +13,17 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/dogs', (req, res) => {
-    getDogs(req, res);
-});
-
-router.get('/dogs/name', (req, res) => {
-    getRazaByName(req, res);
-});
-
-router.get('/dogs/:id', (req, res) => {
+    const { name } = req.query;
+    if (name) {
+      getRazaByName(req, res);
+    } else {
+      getDogs(req, res);
+    }
+  });
+  
+  router.get('/dogs/:id', (req, res) => {
     getRazaByID(req, res);
-});
+  });
 
 router.get('/temperaments', (req, res) => {
     getTemperaments(req, res);
