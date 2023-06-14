@@ -1,0 +1,21 @@
+.pageBtn{
+    height: 35px;
+    width: 35px;
+    margin: 6px;
+    border-radius: 15px;
+    background: linear-gradient(135deg,#e0726af7, #dce9dc);
+    box-shadow: 3px 3px 2px rgba(201, 177, 99, 0.566);
+    border: none;
+    cursor: pointer;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .pagination li{
+    list-style-type: none;
+  }
+  
