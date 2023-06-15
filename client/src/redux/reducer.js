@@ -29,8 +29,8 @@ const reducer  = (state = initialState, action) => {
 
         case FILTER_BY_TEMP:
             const tempFilter = state.allDogs.filter(dog => {
-                if(dog.createdInDb)return dog.temperaments.map(dog => dog.name)?.includes(action.payload)
-                else return dog.temperaments?.includes(action.payload)
+                if(dog.createdInDb) return dog.temperament.map(dog => dog.name)?.includes(action.payload)
+                else return dog.temperament?.includes(action.payload)
             })
             
             return {
