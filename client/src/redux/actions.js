@@ -17,20 +17,23 @@ export const getDogs = () => {
 }
 
 export const getNameDogs = (name) => {
-    return async function(dispatch){
-        try {
-          const response = await axios('http://localhost:3001/dogs?name=' + name);
-          return dispatch ({
-            type: GET_NAME_DOGS,
-            payload: response.data
-          }) 
-        } catch (error) {
-            console.log(error)
-            return alert('Raza inexistente.')
-        }
-        
-    }
-}
+    return async function(dispatch) {
+      try {
+        const response = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+        const dogs = response.data.map((dog) => ({
+          ...dog,
+          image: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`
+        }));
+        dispatch({
+          type: 'GET_NAME_DOGS',
+          payload: dogs
+        });
+      } catch (error) {
+        console.log(error);
+        alert('Raza inexistente.');
+      }
+    };
+  };
 
 export const getTemperaments = () => {
     return async function (dispatch) {

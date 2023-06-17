@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    background: linear-gradient(135deg,#e0726a, #dce9dc);
+    width: 35%;
+    height: auto;
+    margin-left: 430px;
+    margin-top: 1%;
+    place-content: center;
+    place-items: center;
+    border-radius: 30px;
+    box-shadow: 20px 10px 10px rgba(130, 105, 22, 0.566);
+    font-family: 'Lobster', cursive;
+}
+
+.body{
+    background: url(https://img.freepik.com/vector-premium/ilustracion-caricatura-perro-kangal-sentado-sobre-fondo-blanco_143596-107.jpg?w=2000);
+    background-position: 25px;
+    background-size: 650px;
+    padding: 3vh;
+}
+
+.loading{
+    background: linear-gradient(135deg,#e0726a, #dce9dc);
+    border-radius: 30px;
+    font-family: 'Lobster', cursive;
+    font-size:xx-large;
+    width: 70vh;
+    height: 89vh;
+}
+
+.btn{
+    background-color: #dba39f;
+    border-radius: 30px;
+    margin-left: 350px;
+    margin-top: 1%;
+    font-size:medium;
+    cursor: pointer;
+}

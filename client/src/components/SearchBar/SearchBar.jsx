@@ -12,7 +12,6 @@ export default function SearchBar() {
     const handleInputChange = (e) => {
         e.preventDefault()
         setName(e.target.value)
-
     }
 
     const handleSubmit = (e) => {
