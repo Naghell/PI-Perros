@@ -2,19 +2,18 @@ const { Dog } = require('../db');
 
 const postDog = async (req, res) => {
   try {
-    const { id, name, weight, height, image, life_span, temperament } = req.body;
-    if (!id || !name || !weight || !height || !image || !life_span || !temperament) {
+    const { name, weight, height, image, life_span, temperaments, createdInDb } = req.body;
+    if ( !name || !weight || !height || !image || !life_span || !temperaments) {
       return res.status(400).send('Faltan datos');
     }
     const dog = await Dog.findOrCreate({
       where: {
-        id: id,
-        nombre: name,
-        peso: weight,
-        altura: height,
-        imagen: image,
-        anios_vida: life_span,
-        temperamento: temperament
+        name,
+        weight,
+        height,
+        image,
+        life_span,
+        temperaments
       }
     });
     res.status(200).json(dog);

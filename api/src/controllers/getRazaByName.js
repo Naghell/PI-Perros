@@ -11,7 +11,7 @@ const getRazaByName = async (req, res) => {
       const razaAPI = await axios.get(`${URL}/v1/breeds/search?q=${name}`);
       const razaDB = await Dog.findAll({
         where: {
-          nombre: {
+          name: {
             [Op.iLike]: `%${name}%`,
           },
         },

@@ -52,6 +52,8 @@ export const postDog = (payload) => {
     return async function (dispatch) {
         try {
             const response = await axios.post('http://localhost:3001/dogs', payload)
+            console.log(payload);
+            console.log(response.data);
             return dispatch({
                 type: POST_DOG,
                 payload: response.data

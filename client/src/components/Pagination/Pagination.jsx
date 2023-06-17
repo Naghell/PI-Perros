@@ -1,35 +1,118 @@
-import style from './Pagination.module.css'
+import React, { useState, useEffect } from "react";
+import style from './Pagination.module.css';
 
-//creamos el componente paginado pasandole por parametros a los perros por pagina, todos los perros y la funcion paginado de Home
-const Pagination = ({dogsPerPage, allDogs, paginated}) => {
+const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(allDogs / dogsPerPage);
+  const pageNumbers = [];
 
-    //creamos un array llamado pageNumbers
-    const pageNumbers = [];
-
-
-    for(let i = 1; i <= Math.ceil(allDogs/dogsPerPage); i++) {
-        pageNumbers.push(i)//pusheamos en el array pageNumbers todos los numeros i siempre que i sea menor o igual al cociente redondeado entre todos los perros y los perros por pagina
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
     }
+  }, [currentPage, totalPages]);
 
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    paginated(pageNumber);
+  };
 
-    return(
-        <nav>
-            <ul className={style.pagination}>
-                
-                {
-                pageNumbers && pageNumbers.map((number) => {
-                    return(
-                        <li key={number}>
-                            <button key={number} 
-                                    className={style.pageBtn} 
-                                    onClick={() => paginated(number)}> {number} </button>
-                        </li>
-                     )
-                })
-                }
-            </ul>
-        </nav>
-    )
-}
+  const handleFirstPage = () => {
+    setCurrentPage(1);
+    paginated(1);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      paginated(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+      paginated(currentPage + 1);
+
+    }
+  };
+
+  const handleLastPage = () => {
+    setCurrentPage(totalPages);
+    paginated(totalPages);
+  };
+
+  let startPage = currentPage - 2;
+  let endPage = currentPage + 2;
+
+  if (startPage < 1) {
+    startPage = 1;
+    endPage = Math.min(startPage + 4, totalPages);
+  }
+
+  if (endPage > totalPages) {
+    endPage = totalPages;
+    startPage = Math.max(endPage - 4, 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    pageNumbers.push(i);
+  }
+
+  return (
+    <nav>
+      <ul className={style.pagination}>
+        <li>
+          <button
+            className={`${style.pageBtn} ${currentPage === 1 ? style.disabled : ""}`}
+            onClick={handleFirstPage}
+            disabled={currentPage === 1}
+          >
+            &laquo;
+          </button>
+        </li>
+        <li>
+          <button
+            className={`${style.pageBtn} ${currentPage === 1 ? style.disabled : ""}`}
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
+            &lt;
+          </button>
+        </li>
+        {pageNumbers.map((number) => {
+          return (
+            <li key={number}>
+              <button
+                className={`${style.pageBtn} ${number === currentPage ? style.active : ""}`}
+                onClick={() => handleClick(number)}
+              >
+                {number}
+              </button>
+            </li>
+          );
+        })}
+        <li>
+          <button
+            className={`${style.pageBtn} ${currentPage === totalPages ? style.disabled : ""}`}
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            &gt;
+          </button>
+        </li>
+        <li>
+          <button
+            className={`${style.pageBtn} ${currentPage === totalPages ? style.disabled : ""}`}
+            onClick={handleLastPage}
+            disabled={currentPage === totalPages}
+          >
+            &raquo;
+          </button>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Pagination;

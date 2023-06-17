@@ -14,7 +14,7 @@ const getTemperaments = async (req, res) => {
           temperamentsSet.add(temperamento);
           await Temperament.findOrCreate({
             where: {
-              nombre: temperamento
+              name: temperamento
             }
           });
         });

@@ -10,30 +10,35 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
-      imagen: {
+      image: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      nombre: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      altura: {
+      height: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-      peso: {
+      weight: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-      anios_vida: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      temperamento: {
+      life_span: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      temperaments: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+      },
+      createdInDb: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      }
     },
     { timestamps: false }
   );

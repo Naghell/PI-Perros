@@ -1,14 +1,33 @@
 const axios = require('axios');
-const URL = 'https://api.thedogapi.com'
-
+const { Dog } = require('../db');
+const URL = 'https://api.thedogapi.com';
 
 const getDogs = async (req, res) => {
-    try {
-        const { data } = await axios.get(`${URL}/v1/breeds`);
-        return res.status(200).json(data);
-    } catch (error) {
-        return res.status(400).json({error: error.message})
-    }
-}
+  try {
+    const { data } = await axios.get(`${URL}/v1/breeds`);
+
+    // Obtiene los perros de tu base de datos
+    const dogsFromDB = await Dog.findAll();
+
+    // Combina los perros de la API y los perros de tu base de datos
+    const dogs = [
+      ...data,
+      ...dogsFromDB.map((dog) => ({
+        id: dog.id,
+        name: dog.name,
+        height: dog.height,
+        weight: dog.weight,
+        life_span: dog.life_span,
+        temperaments: dog.temperaments,
+        image: dog.image,
+        createdInDb: dog.createdInDb
+      })),
+    ];
+
+    return res.status(200).json(dogs);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = getDogs;

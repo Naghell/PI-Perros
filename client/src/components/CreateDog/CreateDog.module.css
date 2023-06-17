@@ -1,0 +1,71 @@
+.container {
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(135deg,#dc8a84f7, #c0d2c0);
+    width: 550px;
+    height: auto;
+    place-content: center;
+    place-items: center;
+    border-radius: 20px;
+    margin-left: 30%;
+    box-shadow: 25px 20px 50px rgba(130, 105, 22, 0.566);
+}
+
+.body {
+    background: url(https://i.pinimg.com/originals/af/8f/6c/af8f6c1b9db5b1da36069285ee82c402.gif);
+    height: 100vh;
+    width: 100vw;
+    padding-top: 15vh;
+    margin-top: -3%;
+}
+.li {
+    list-style:none;
+}
+
+.btnBack {
+    border-radius: 30px;
+    margin-left: 80%;
+    font-size: large;
+    cursor: pointer;
+    background-color: #dc8a8484;
+}
+
+.error {
+    color: red;
+}
+
+.input {
+    border-radius: 15px;
+    background-color: rgba(194, 205, 194, 0.934);
+    margin-top: 3%;
+    align-items:flex-start;
+}
+
+.select {
+    border-radius: 15px;
+    background-color: rgba(194, 205, 194, 0.934);
+    font-size:large ;
+}
+
+.form {
+    font-size:larger ;
+}
+
+.btnCreate {
+    background-color: rgba(194, 205, 194, 0.934);
+    border-radius: 30px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.temperaments {
+   margin-top: 1%;
+}
+
+.temps{
+    display:flexbox;
+    background-color: rgba(230, 185, 102, 0.821);
+    border-radius: 35px;
+    cursor: pointer;
+}
