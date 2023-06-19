@@ -8,7 +8,7 @@ import validate from './validation.js';
 
 const CreateDog = () => {
     const dispatch = useDispatch();
-    const temps = useSelector((state) => state.temperaments);
+    const temps = useSelector((state) => state.temperament);
 
     const [dogData, setData] = useState({
         name: "",
@@ -18,7 +18,7 @@ const CreateDog = () => {
         maxWeight: 0,
         life_span: 0,
         image: "",
-        temperaments: []
+        temperament: []
     });
 
     const [errors, setErrors] = useState({});
@@ -38,13 +38,14 @@ const CreateDog = () => {
     const handleSelect = (event) => {
         setData({
             ...dogData,
-            temperaments: [...dogData.temperaments, event.target.value]
+            temperament: [...dogData.temperament, event.target.value]
         });
         validate(dogData, setErrors);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(dogData.temperament)
         const avgHeight = Math.floor(Number(dogData.minHeight + dogData.maxHeight) / 2);
         const avgWeight = Math.floor(Number(dogData.minWeight + dogData.maxWeight) / 2);
         const dog = {
@@ -52,7 +53,7 @@ const CreateDog = () => {
             height: avgHeight,
             weight: avgWeight,
             life_span: dogData.life_span,
-            temperaments: dogData.temperaments,
+            temperament: dogData.temperament.join(", "),
             image: dogData.image
         };
         dispatch(postDog(dog));
@@ -63,7 +64,7 @@ const CreateDog = () => {
         event.preventDefault();
         setData({
             ...dogData,
-            temperaments: dogData.temperaments.filter((temp) => temp !== e)
+            temperament: dogData.temperament.filter((temp) => temp !== e)
         });
     };
 
@@ -166,7 +167,7 @@ const CreateDog = () => {
                             );
                         })}
                     </select>
-                    {errors.temperaments && <p className={style.error}>{errors.temperaments}</p>}
+                    {errors.temperament && <p className={style.error}>{errors.temperament}</p>}
                     <div>
                         <button
                             type="submit"
@@ -185,7 +186,7 @@ const CreateDog = () => {
                     </div>
                 </form>
 
-                {dogData.temperaments.map((temp) => (
+                {dogData.temperament.map((temp) => (
                     <div className={style.temperaments}>
                         <button onClick={() => handleDelete(temp)} className={style.temps}>
                             {temp}

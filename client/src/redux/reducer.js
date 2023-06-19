@@ -4,7 +4,7 @@ import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS
 const initialState = {
   allDogs: [],
   dogs: [],
-  temperaments: [],
+  temperament: [],
   detail: [],
 };
 
@@ -87,7 +87,7 @@ const reducer = (state = initialState, action) => {
     case GET_TEMPERAMENTS:
       return {
         ...state,
-        temperaments: action.payload,
+        temperament: action.payload,
       };
 
     case GET_DETAIL:

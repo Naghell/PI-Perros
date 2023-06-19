@@ -10,10 +10,10 @@ import style from './Home.module.css';
 const Home = () => {
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.dogs);
-    const allTemps = useSelector((state) => state.temperaments);
-    const [refresh, setRefresh] = useState();
+    const allTemps = useSelector((state) => state.temperament);
+    const [refresh, setRefresh] = useState('default'); // Valor por defecto para el select
     const [currentPage, setCurrentPage] = useState(1);
-    const [dogsPerPage, setDogsPerPage] = useState(8);
+    const dogsPerPage = 8;
     const indexOfLastDog = currentPage * dogsPerPage;
     const indexOfFirstDog = indexOfLastDog - dogsPerPage;
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
@@ -27,33 +27,27 @@ const Home = () => {
         dispatch(getTemperaments());
     }, [dispatch]);
 
-    const handleRefresh = (e) => {
-        e.preventDefault();
+    const handleRefresh = () => {
         dispatch(getDogs());
         setRefresh('default');
         setCurrentPage(1);
     };
 
     const handleFilterCreated = (e) => {
-        e.preventDefault();
         dispatch(filterCreated(e.target.value));
         setCurrentPage(1);
-        setRefresh();
     };
 
     const handleFilterByTemp = (e) => {
-        e.preventDefault();
         dispatch(filterTemps(e.target.value));
         setCurrentPage(1);
-        setRefresh();
     };
 
     const handleOrderBy = (e) => {
         const val = e.target.value;
         dispatch(val.includes('asc') || val.includes('des') ? orderByName(val) : orderByWeight(val));
         setCurrentPage(1);
-        setOrder(val);
-        setRefresh();
+        setRefresh(val);
     };
 
     return (
@@ -70,7 +64,7 @@ const Home = () => {
                     <SearchBar />
                     <div className={style.filters}>
                         <select className={style.filter} onChange={handleOrderBy} value={refresh}>
-                            <option value='default' selected disabled>Ordenar por</option>
+                            <option value='default' disabled>Ordenar por</option>
                             <option disabled>Alfabético</option>
                             <option value='asc'>A-Z</option>
                             <option value='des'>Z-A</option>
@@ -78,14 +72,14 @@ const Home = () => {
                             <option value='pesado'>Pesado</option>
                             <option value='ligero'>Ligero</option>
                         </select>
-                        <select className={style.filter} onChange={handleFilterByTemp} value={refresh}>
+                        <select className={style.filter} onChange={handleFilterByTemp}>
                             <option value='default' hidden>Temperamentos</option>
                             {allTemps.map((e) => {
                                 return <option value={e} key={e}>{e}</option>;
                             })}
                         </select>
-                        <select className={style.filter} onChange={handleFilterCreated} value={refresh}>
-                            <option value='default' selected disabled>Default</option>
+                        <select className={style.filter} onChange={handleFilterCreated}>
+                            <option value='default' disabled>Default</option>
                             <option value='existing'>Existente</option>
                             <option value='created'>Creado</option>
                         </select>
@@ -97,7 +91,7 @@ const Home = () => {
                     currentDogs.map((e) => (
                         <React.Fragment key={e.id}>
                             <Link to={`/home/${e.id}`} className={style.link}>
-                                <Card name={e.name} image={e.image} temperaments={e.temperaments} weight={e.weight} />
+                                <Card name={e.name} image={e.image} temperament={e.temperament} weight={e.weight} life_span={e.life_span} />
                             </Link>
                         </React.Fragment>
                     ))

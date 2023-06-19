@@ -14,6 +14,7 @@ const Detail = () => {
       setDog(response.payload);
     });
   }, [dispatch, id]);
+  console.log(dog);
 
   return (
     <div className={style.body}>
@@ -40,7 +41,7 @@ const Detail = () => {
               <u>Life-span:</u> {dog.life_span}
             </h3>
             <h4>
-              <u>Temperaments:</u>{" "}
+              <p>Temperaments:</p>
               {dog.temperament}
             </h4>
           </div>

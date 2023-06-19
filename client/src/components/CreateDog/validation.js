@@ -35,8 +35,8 @@ const validate = (dogData, setErrors) => {
       newErrors.life_span = "La esperanza de vida es inválida.";
     }
   
-    if (dogData.temperaments.length === 0) {
-      newErrors.temperaments = "Debe seleccionar al menos un temperamento.";
+    if (dogData.temperament.length === 0) {
+      newErrors.temperament = "Debe seleccionar al menos un temperamento.";
     }
   
     setErrors(newErrors);
