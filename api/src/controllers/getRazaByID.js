@@ -24,7 +24,7 @@ const getRazaByID = async (req, res) => {
         height: razaAPI.height,
         weight: razaAPI.weight,
         life_span: razaAPI.life_span,
-        temperament: razaAPI.temperament,
+        temperament: razaAPI.temperament
       };
     } else {
       // Consultar en la base de datos local
@@ -45,7 +45,7 @@ const getRazaByID = async (req, res) => {
         height: razaDB.height,
         weight: razaDB.weight,
         life_span: razaDB.life_span,
-        temperament: razaDB.temperament.join(", ")
+        temperament: razaDB.temperament
       };
     }
 

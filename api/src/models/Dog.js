@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
       },
       image: {
         type: DataTypes.STRING,
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
         allowNull: false
       },
       temperament: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
       },
       createdInDb: {

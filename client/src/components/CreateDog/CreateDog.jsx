@@ -46,22 +46,21 @@ const CreateDog = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(dogData.temperament)
-        const avgHeight = Math.floor(Number(dogData.minHeight + dogData.maxHeight) / 2);
-        const avgWeight = Math.floor(Number(dogData.minWeight + dogData.maxWeight) / 2);
+        const avgHeight = Math.floor((Number(dogData.minHeight) + Number(dogData.maxHeight)) / 2);
+        const avgWeight = Math.floor((Number(dogData.minWeight) + Number(dogData.maxWeight)) / 2);
         const dog = {
             name: dogData.name,
             height: avgHeight,
             weight: avgWeight,
             life_span: dogData.life_span,
-            temperament: dogData.temperament.join(", "),
+            temperament: dogData.temperament,
             image: dogData.image
         };
         dispatch(postDog(dog));
         alert('Dog Created');
     };
 
-    const handleDelete = (event) => {
-        event.preventDefault();
+    const handleDelete = (e) => {
         setData({
             ...dogData,
             temperament: dogData.temperament.filter((temp) => temp !== e)
@@ -156,6 +155,7 @@ const CreateDog = () => {
                             name="image"
                             onChange={(event) => handleChange(event)}
                         />
+                        {errors.image && <p className={style.error}>{errors.image}</p>}
                     </div>
                     <select onChange={(event) => handleSelect(event)} className={style.select}>
                         <option hidden>Temperaments</option>
@@ -178,7 +178,9 @@ const CreateDog = () => {
                                 !dogData.maxHeight ||
                                 !dogData.minWeight ||
                                 !dogData.maxWeight ||
-                                !dogData.life_span
+                                !dogData.life_span ||
+                                !dogData.temperament ||
+                                !dogData.image
                             }
                         >
                             Create Dog

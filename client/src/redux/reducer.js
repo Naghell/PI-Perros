@@ -11,18 +11,32 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DOGS:
+      const sortedDogs = action.payload.sort((a, b) => {
+        if (a.name > b.name) return 1;
+        if (b.name > a.name) return -1;
+        return 0;
+      });
+    
       return {
         ...state,
-        allDogs: action.payload,
-        dogs: action.payload,
+        allDogs: sortedDogs,
+        dogs: sortedDogs
       };
+    
 
     case FILTER_CREATED:
       const allDogs = state.allDogs;
-      const createdFilter = action.payload === "created" ? allDogs.filter((dog) => dog.createdInDb) : allDogs.filter((dog) => !dog.createdInDb);
+      let createdFilter = [];
+      if (action.payload === "default") {
+        createdFilter = allDogs.sort();
+      } else if (action.payload === "existing") {
+        createdFilter = allDogs.filter((dog) => !dog.createdInDb)
+      } else {
+        createdFilter = allDogs.filter((dog) => dog.createdInDb)
+      }
       return {
         ...state,
-        dogs: createdFilter,
+        dogs: createdFilter
       };
 
     case FILTER_BY_TEMP:
@@ -32,11 +46,11 @@ const reducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        dogs: tempFilter,
+        dogs: tempFilter
       };
 
     case ORDER_BY_NAME:
-      let sortedArr = state.allDogs.sort((a, b) => {
+      const sortedArr = state.allDogs.sort((a, b) => {
         if (action.payload === "asc") {
           if (a.name > b.name) return 1;
           if (b.name > a.name) return -1;
@@ -50,50 +64,66 @@ const reducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        dogs: sortedArr,
+        dogs: sortedArr
       };
 
-      case ORDER_BY_WEIGHT:
-        const orderedDogs = state.allDogs.sort((a, b) => {
-          const [minWeightA, maxWeightA] = a.weight.metric.split(" - ").map(Number);
-          const [minWeightB, maxWeightB] = b.weight.metric.split(" - ").map(Number);
-      
-          if (action.payload === 'pesado') {
-            return maxWeightB - maxWeightA || minWeightB - minWeightA;
-          }
-          if (action.payload === 'ligero') {
-            return minWeightA - minWeightB || maxWeightA - maxWeightB;
-          }
-      
-          return 0;
-        });
-      
-        return {
-          ...state,
-          dogs: orderedDogs
-        };
+    case ORDER_BY_WEIGHT:
+      const orderedDogs = state.allDogs.sort((a, b) => {
+        let [minWeightA, maxWeightA] = [0, 0];
+        let [minWeightB, maxWeightB] = [0, 0];
+        
+        if (a.weight.metric) {
+          [minWeightA, maxWeightA] = a.weight.metric.split(" - ").map(Number);
+        } else {
+          minWeightA = a.weight;
+          maxWeightA = a.weight;
+        }
+        
+        if (b.weight.metric) {
+          [minWeightB, maxWeightB] = b.weight.metric.split(" - ").map(Number);
+        } else {
+          minWeightB = b.weight;
+          maxWeightB = b.weight;
+        }
+        
+
+        if (action.payload === "pesado") {
+          return maxWeightB - maxWeightA || minWeightB - minWeightA;
+        }
+        if (action.payload === "ligero") {
+          return minWeightA - minWeightB || maxWeightA - maxWeightB;
+        }
+
+        return 0;
+      });
+
+      return {
+        ...state,
+        dogs: orderedDogs
+      };
 
     case GET_NAME_DOGS:
       return {
         ...state,
-        dogs: action.payload,
+        dogs: action.payload
       };
 
     case POST_DOG:
       return {
         ...state,
+        dogs: action.payload
       };
 
     case GET_TEMPERAMENTS:
       return {
         ...state,
-        temperament: action.payload,
+        temperament: action.payload
       };
 
     case GET_DETAIL:
       return {
         ...state,
-        detail: action.payload,
+        detail: action.payload
       };
 
     default:

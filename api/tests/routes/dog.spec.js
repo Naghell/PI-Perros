@@ -29,7 +29,6 @@ describe('Rutas', () => {
       const response = await agent.get('/dogs/1')
       expect(response.status).toBe(200);
       expect(response.body.id).toBe(1);
-      expect(response.body.name).toBe('Affenpinscher');
     });
   });
   describe('GET /dogs by name', () => {

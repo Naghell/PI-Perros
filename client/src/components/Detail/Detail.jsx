@@ -14,7 +14,6 @@ const Detail = () => {
       setDog(response.payload);
     });
   }, [dispatch, id]);
-  console.log(dog);
 
   return (
     <div className={style.body}>
@@ -24,26 +23,18 @@ const Detail = () => {
         </Link>
         {dog ? (
           <div>
-            <h3>Hi, I Am <u>{dog.name}</u>!</h3>
+            <h3>{dog.name}</h3>
             <img
-              src={dog.image ? dog.image : dog.image.url}
+              src={dog.image.url || dog.image}
               alt=""
               width="300px"
               height="300px"
             />
-            <h3>
-              <u>Average height:</u> {dog.height.metric} cm
-            </h3>
-            <h3>
-              <u>Average weight:</u> {dog.weight.metric} kg
-            </h3>
-            <h3>
-              <u>Life-span:</u> {dog.life_span}
-            </h3>
-            <h4>
-              <p>Temperaments:</p>
-              {dog.temperament}
-            </h4>
+            <p>Average height: {dog.height.metric || dog.height} cm</p>
+            <p>Average weight: {dog.weight.metric || dog.weight} kg</p>
+            <p>Life-span: {dog.life_span}</p>
+            <p>Temperaments: {dog.temperament}</p>
+              
           </div>
         ) : (
           <div className={style.loading}>

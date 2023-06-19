@@ -1,5 +1,6 @@
 const validate = (dogData, setErrors) => {
     const newErrors = {};
+    const imageUrlRegex = /\.(jpeg|jpg|gif|png|bmp|webp)$/i;
   
     if (!dogData.name) {
       newErrors.name = "El nombre es inválido.";
@@ -38,8 +39,15 @@ const validate = (dogData, setErrors) => {
     if (dogData.temperament.length === 0) {
       newErrors.temperament = "Debe seleccionar al menos un temperamento.";
     }
+    
+    console.log(imageUrlRegex.test(dogData.image))
+
+    if (!imageUrlRegex.test(dogData.image)) {
+      newErrors.image = "Debes colocar una imagen.";
+    }
   
     setErrors(newErrors);
+    console.log(newErrors);
   };
   
   export default validate;
