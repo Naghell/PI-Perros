@@ -6,7 +6,6 @@ const URL = 'https://api.thedogapi.com';
 const getRazaByName = async (req, res) => {
   try {
       const { name } = req.query;
-      console.log(name);
 
       const razaAPI = await axios.get(`${URL}/v1/breeds/search?q=${name}`);
       const razaDB = await Dog.findAll({

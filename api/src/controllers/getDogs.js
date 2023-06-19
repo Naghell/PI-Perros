@@ -12,16 +12,7 @@ const getDogs = async (req, res) => {
     // Combina los perros de la API y los perros de tu base de datos
     const dogs = [
       ...data,
-      ...dogsFromDB.map((dog) => ({
-        id: dog.id,
-        name: dog.name,
-        height: dog.height,
-        weight: dog.weight,
-        life_span: dog.life_span,
-        temperaments: dog.temperaments,
-        image: dog.image,
-        createdInDb: dog.createdInDb
-      })),
+      ...dogsFromDB
     ];
 
     return res.status(200).json(dogs);

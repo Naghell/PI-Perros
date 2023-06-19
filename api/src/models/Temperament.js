@@ -10,10 +10,11 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
   },
-  {timestamps: false});
+  { timestamps: false }
+  );
 
   return Temperament;
 };
