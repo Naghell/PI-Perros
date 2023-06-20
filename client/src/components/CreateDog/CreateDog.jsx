@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { postDog, getTemperaments } from "../../redux/actions";
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import style from './CreateDog.module.css';
 import validate from './validation.js';
 
 const CreateDog = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const temps = useSelector((state) => state.temperament);
 
     const [dogData, setData] = useState({
@@ -21,7 +23,9 @@ const CreateDog = () => {
         temperament: []
     });
 
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({
+        default: "Inicializado"
+    });
 
     useEffect(() => {
         dispatch(getTemperaments());
@@ -57,7 +61,7 @@ const CreateDog = () => {
             image: dogData.image
         };
         dispatch(postDog(dog));
-        alert('Dog Created');
+        navigate('/home');
     };
 
     const handleDelete = (e) => {
@@ -164,7 +168,7 @@ const CreateDog = () => {
                         <button
                             type="submit"
                             className={style.form__button}
-                            disabled={errors.name || errors.temperament || errors.image || errors.minHeight || errors.maxHeight || errors.minWidth || errors.maxWidth}
+                            disabled={ errors.default || errors.name || errors.temperament || errors.image || errors.minHeight || errors.maxHeight || errors.minWidth || errors.maxWidth}
                         >
                             Crear
                         </button>

@@ -16,10 +16,10 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <div className={style.body}>
-      <div className={style.container}>
+    <div className={style.detail__background}>
+      <div className={style.detail__container}>
         <Link to="/home">
-          <button className={style.btn}>Back</button>
+          <button className={style.detail__button}>Back</button>
         </Link>
         {dog ? (
           <div>
