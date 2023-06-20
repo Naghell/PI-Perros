@@ -61,11 +61,23 @@ header {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 50px;
     height: 50px;
     background-color: #e4b689;
+}
+
+.header__wrapper__add {
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+.header__wrapper__add:hover {
+    transition: .25s;
+    transform: translateY(-2px);
 }
 
 .filters select {

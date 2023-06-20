@@ -3,6 +3,7 @@ nav {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin: 10px 0 5px 0;
 }
 
 .pageBtn {
@@ -10,10 +11,15 @@ nav {
   width: 35px;
   margin: 6px;
   border-radius: 15px;
-  background: linear-gradient(135deg, #e0726af7, #dce9dc);
+  background-color: #f8f0ea;
   box-shadow: 3px 3px 2px rgba(201, 177, 99, 0.566);
-  border: none;
+  border: 1px solid black;
   cursor: pointer;
+}
+
+.pageBtn:hover {
+  transition: .25s;
+  transform: translateY(-5px);
 }
 
 .pagination {

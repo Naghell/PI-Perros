@@ -18,27 +18,28 @@ const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
             <div className={style.header__wrapper}>
                 <SearchBar />
                 <div className={style.filters}>
-                        <select value={refresh} className={style.filter} onChange={(e) => handleOrderBy(e)}>
-                            <option value='default' hidden>Ordenar por</option>
-                            <option disabled>Alfabético</option>
-                            <option value='asc'>A-Z</option>
-                            <option value='des'>Z-A</option>
-                            <option disabled>Peso</option>
-                            <option value='pesado'>Pesado</option>
-                            <option value='ligero'>Ligero</option>
-                        </select>
-                        <select className={style.filter} onChange={(e) => handleFilter(e.target.value, filterTemps)}>
-                            <option value='default' hidden>Temperamentos</option>
-                            {allTemps.map((e) => {
-                                return <option value={e} key={e}>{e}</option>;
-                            })}
-                        </select>
-                        <select className={style.filter} onChange={(e) => handleFilter(e.target.value, filterCreated)}>
-                            <option value='default'>Todos</option>
-                            <option value='existing'>Existente</option>
-                            <option value='created'>Creado</option>
-                        </select>
-                    </div>
+                    <select value={refresh} className={style.filter} onChange={(e) => handleOrderBy(e)}>
+                        <option value='default' hidden>Ordenar por</option>
+                        <option disabled>Alfabético</option>
+                        <option value='asc'>A-Z</option>
+                        <option value='des'>Z-A</option>
+                        <option disabled>Peso</option>
+                        <option value='pesado'>Pesado</option>
+                        <option value='ligero'>Ligero</option>
+                    </select>
+                    <select className={style.filter} onChange={(e) => handleFilter(e.target.value, filterTemps)}>
+                        <option value='default' hidden>Temperamentos</option>
+                        {allTemps.map((e) => {
+                            return <option value={e} key={e}>{e}</option>;
+                        })}
+                    </select>
+                    <select className={style.filter} onChange={(e) => handleFilter(e.target.value, filterCreated)}>
+                        <option value='default'>Todos</option>
+                        <option value='existing'>Existente</option>
+                        <option value='created'>Creado</option>
+                    </select>
+                </div>
+                <a className={style.header__wrapper__add} href='/dog'>➕</a>
             </div>
         </header>
     )

@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import Header from "../Header/Header";
 import Loader from "../Loader/Loader";
+import Footer from "../Footer/Footer";
 import style from './Home.module.css';
 
 const Home = () => {
@@ -78,6 +79,7 @@ const Home = () => {
                             />
                         </div>
                 }
+                <Footer/>
             </div>
         </div>
     );

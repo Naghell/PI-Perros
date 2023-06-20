@@ -1,17 +1,12 @@
-.search__container {
-    margin-right: 100px;
-}
-
 .search__input {
     width: 250px;
     padding: 2px 0 0 10px;
     height: 30px;
     border-radius: 15px;
     border: 1px solid black;
-    margin-right: 15px;
-    transition: .25s;
     background-color: #F8F0EA;
     font-family: Overpass, sans-serif;
+    margin-right: 15px;
 }
 
 .search__button {
