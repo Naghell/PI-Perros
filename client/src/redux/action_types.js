@@ -1,5 +1,3 @@
-
-//creamos las action types para utilizar en las action y en el reducer
 export const GET_DOGS = 'GET_DOGS'
 export const FILTER_CREATED = 'FILTER_CREATED'
 export const FILTER_BY_TEMP = 'FILTER_BY_TEMP'

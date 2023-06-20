@@ -8,13 +8,12 @@ export const getDogs = () => {
             return dispatch({
                 type: GET_DOGS,
                 payload: response.data
-            }) 
+            });
         } catch (error) {
             console.log(error);
-        }
-        
-    }
-}
+        };
+    };
+};
 
 export const getNameDogs = (name) => {
     return async function(dispatch) {
@@ -31,7 +30,7 @@ export const getNameDogs = (name) => {
       } catch (error) {
         console.log(error);
         alert('Raza inexistente.');
-      }
+      };
     };
   };
 
@@ -44,12 +43,12 @@ export const getTemperaments = () => {
                     type: GET_TEMPERAMENTS,
                     payload: response.data
                 })
-            )
+            );
         } catch (error) {
             console.log(error);
-        }
-    }
-}
+        };
+    };
+};
 
 export const postDog = (payload) => {
     return async function (dispatch) {
@@ -63,36 +62,37 @@ export const postDog = (payload) => {
             }) 
         } catch (error) {
             console.log(error);
-        }
-        
-    }
-}
+        };
+    };
+};
 
 export const filterCreated = (payload) => {
     return{
         type: FILTER_CREATED,
         payload
-    }
-}
+    };
+};
+
 export const filterTemps = (payload) => {
     return {
         type: FILTER_BY_TEMP,
         payload
-    }
+    };
 }
 
 export const orderByName = (payload) => {
     return {
         type: ORDER_BY_NAME,
         payload
-    }
-}
+    };
+};
+
 export const orderByWeight = (payload) => {
     return {
         type: ORDER_BY_WEIGHT,
         payload
     }
-}
+};
 
 export const getDetail = (id) => {
     return async function (dispatch) {
@@ -104,6 +104,6 @@ export const getDetail = (id) => {
             })
         } catch (error) {
             console.log(error);
-        }
-    }
-}
+        };
+    };
+};

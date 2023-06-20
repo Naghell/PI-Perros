@@ -1,6 +1,5 @@
-import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS, GET_TEMPERAMENTS, POST_DOG, GET_DETAIL, FILTER_BY_TEMP } from "./action_types";
+import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS, GET_TEMPERAMENTS, POST_DOG, GET_DETAIL, FILTER_BY_TEMP } from './action_types';
 
-//creamos los estados iniciales
 const initialState = {
   allDogs: [],
   dogs: [],
@@ -35,7 +34,7 @@ const reducer = (state = initialState, action) => {
             return dog.temperament?.includes(action.payload);
           }
         });
-      }
+      };
       return {
         ...state,
         dogs: tempFilter
@@ -49,7 +48,7 @@ const reducer = (state = initialState, action) => {
         createdFilter = state.dogs.filter((dog) => !dog.createdInDb);
       } else {
         createdFilter = state.dogs.filter((dog) => dog.createdInDb);
-      }
+      };
       return {
         ...state,
         dogs: createdFilter
@@ -83,21 +82,21 @@ const reducer = (state = initialState, action) => {
         } else {
           minWeightA = a.weight;
           maxWeightA = a.weight;
-        }
+        };
 
         if (b.weight.metric) {
           [minWeightB, maxWeightB] = b.weight.metric.split(" - ").map(Number);
         } else {
           minWeightB = b.weight;
           maxWeightB = b.weight;
-        }
+        };
 
         if (action.payload === "pesado") {
           return maxWeightB - maxWeightA || minWeightB - minWeightA;
-        }
+        };
         if (action.payload === "ligero") {
           return minWeightA - minWeightB || maxWeightA - maxWeightB;
-        }
+        };
 
         return 0;
       });
