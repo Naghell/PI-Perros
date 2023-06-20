@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, orderByName, orderByWeight, getTemperaments } from '../../redux/actions';
+import { getDogs, getTemperaments } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
@@ -27,25 +27,13 @@ const Home = () => {
 
     setTimeout(() => {
         setIsLoading(false);
-    }, 3000);
+    }, 1000);
 
     const handleRefresh = () => {
+        dispatch(getDogs());
         dispatch(orderByName());
         setRefresh('default');
         setCurrentPage(1);
-    };
-
-    const handleFilter = (value, action) => {
-        dispatch(action(value));
-        setCurrentPage(1);
-        setRefresh(value);
-    };
-
-    const handleOrderBy = (e) => {
-        const val = e.target.value;
-        dispatch(val.includes('asc') || val.includes('des') ? orderByName(val) : orderByWeight(val));
-        setCurrentPage(1);
-        setRefresh(val);
     };
 
     return (
@@ -54,8 +42,8 @@ const Home = () => {
                 <Header
                     refresh={refresh}
                     handleRefresh={handleRefresh}
-                    handleFilter={handleFilter}
-                    handleOrderBy={handleOrderBy} />
+                    setRefresh={setRefresh}
+                    setCurrentPage={setCurrentPage} />
                 {
                     isLoading ? <Loader /> :
 

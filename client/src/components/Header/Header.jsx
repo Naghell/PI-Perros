@@ -1,10 +1,24 @@
 import style from './Header.module.css'
 import SearchBar from '../SearchBar/SearchBar';
-import { useSelector } from 'react-redux';
-import { filterCreated, filterTemps } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterCreated, filterTemps, orderByName, orderByWeight } from '../../redux/actions';
 
-const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
+const Header = ({ refresh, handleRefresh, setRefresh, setCurrentPage }) => {
+    const dispatch = useDispatch();
     const allTemps = useSelector((state) => state.temperament);
+
+    const handleFilter = (value, action) => {
+        dispatch(action(value));
+        setCurrentPage(1);
+        setRefresh(value);
+    };
+
+    const handleOrderBy = (e) => {
+        const val = e.target.value;
+        dispatch(val.includes('asc') || val.includes('des') ? orderByName(val) : orderByWeight(val));
+        setCurrentPage(1);
+        setRefresh(val);
+    };
 
     return (
         <header>
@@ -43,6 +57,6 @@ const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
             </div>
         </header>
     );
-};
+}
 
 export default Header;
