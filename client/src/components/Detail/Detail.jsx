@@ -29,14 +29,14 @@ const Detail = () => {
             className={style.detail__image}
           />
           <div className={style.detail__info}>
-            <p>Tamaño promedio: {dog.height.metric || dog.height} cm</p>
-            <p>Peso promedio: {dog.weight.metric || dog.weight} kg</p>
-            <p>Esperanza de vida: {dog.life_span}</p>
-            <p>Temperamento: {dog.temperament}</p>
+            <p>Tamaño promedio: {dog.height.metric || dog.height} cm.</p>
+            <p>Peso promedio: {dog.weight.metric || dog.weight} kg.</p>
+            <p>Esperanza de vida: {dog.life_span}.</p>
+            <p>Temperamento: {dog.temperament}.</p>
           </div>
 
           <Link to="/home">
-            <button className={style.detail__button}>Back</button>
+            <button className={style.detail__button}>Volver</button>
           </Link>
         </div>
       </div>
