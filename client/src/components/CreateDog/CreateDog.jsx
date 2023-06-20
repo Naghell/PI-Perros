@@ -169,7 +169,7 @@ const CreateDog = () => {
                         <button
                             type="submit"
                             className={style.form__button}
-                            disabled={ errors.default || errors.name || errors.temperament || errors.image || errors.minHeight || errors.maxHeight || errors.minWidth || errors.maxWidth}
+                            disabled={errors.default || errors.name || errors.temperament || errors.image || errors.minHeight || errors.maxHeight || errors.minWidth || errors.maxWidth}
                         >
                             Crear
                         </button>
