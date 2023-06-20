@@ -1,5 +1,7 @@
 .landing__container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
     width: 100vw;
 }
@@ -7,21 +9,31 @@
 .landing__image {
     width: 400px;
     align-self: center;
+    margin-right: 200px;
 }
 
 .landing__logo {
-    width: 60vw;
+    width: 100vw;
     height: 100vh;
     background-image: url('./background.webp');
     background-repeat: repeat;
     background-size: 25%;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
-.landing__form {
-    width: 40vw;
-    height: 100vh;
-    background-color: white;
+@media only screen and (max-width: 899px) {
+    .landing__image {
+        margin-right: 0;
+    }
+    .landing__logo {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .landing__image {
+        width: 250px;
+    }
 }

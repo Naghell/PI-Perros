@@ -16,37 +16,43 @@ const reducer = (state = initialState, action) => {
         if (b.name > a.name) return -1;
         return 0;
       });
-    
+
       return {
         ...state,
         allDogs: sortedDogs,
-        dogs: sortedDogs
-      };
-    
-
-    case FILTER_CREATED:
-      const allDogs = state.allDogs;
-      let createdFilter = [];
-      if (action.payload === "default") {
-        createdFilter = allDogs.sort();
-      } else if (action.payload === "existing") {
-        createdFilter = allDogs.filter((dog) => !dog.createdInDb)
-      } else {
-        createdFilter = allDogs.filter((dog) => dog.createdInDb)
-      }
-      return {
-        ...state,
-        dogs: createdFilter
+        dogs: sortedDogs,
       };
 
     case FILTER_BY_TEMP:
-      const tempFilter = state.allDogs.filter((dog) => {
-        if (dog.createdInDb) return dog.temperament.map((dog) => dog.name)?.includes(action.payload);
-        else return dog.temperament?.includes(action.payload);
-      });
+      let tempFilter = [];
+      if (action.payload === "default") {
+        tempFilter = state.allDogs;
+      } else {
+        tempFilter = state.dogs.filter((dog) => {
+          if (dog.createdInDb) {
+            return dog.temperament?.some((temp) => temp.name === action.payload) || dog.temperament?.includes(action.payload);
+          } else {
+            return dog.temperament?.includes(action.payload);
+          }
+        });
+      }
       return {
         ...state,
         dogs: tempFilter
+      };
+
+    case FILTER_CREATED:
+      let createdFilter = [];
+      if (action.payload === "default") {
+        createdFilter = state.allDogs.sort();
+      } else if (action.payload === "existing") {
+        createdFilter = state.dogs.filter((dog) => !dog.createdInDb);
+      } else {
+        createdFilter = state.dogs.filter((dog) => dog.createdInDb);
+      }
+      return {
+        ...state,
+        dogs: createdFilter,
       };
 
     case ORDER_BY_NAME:
@@ -64,28 +70,27 @@ const reducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        dogs: sortedArr
+        dogs: sortedArr,
       };
 
     case ORDER_BY_WEIGHT:
       const orderedDogs = state.allDogs.sort((a, b) => {
         let [minWeightA, maxWeightA] = [0, 0];
         let [minWeightB, maxWeightB] = [0, 0];
-        
+
         if (a.weight.metric) {
           [minWeightA, maxWeightA] = a.weight.metric.split(" - ").map(Number);
         } else {
           minWeightA = a.weight;
           maxWeightA = a.weight;
         }
-        
+
         if (b.weight.metric) {
           [minWeightB, maxWeightB] = b.weight.metric.split(" - ").map(Number);
         } else {
           minWeightB = b.weight;
           maxWeightB = b.weight;
         }
-        
 
         if (action.payload === "pesado") {
           return maxWeightB - maxWeightA || minWeightB - minWeightA;
@@ -99,31 +104,31 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        dogs: orderedDogs
+        dogs: orderedDogs,
       };
 
     case GET_NAME_DOGS:
       return {
         ...state,
-        dogs: action.payload
+        dogs: action.payload,
       };
 
     case POST_DOG:
       return {
         ...state,
-        dogs: action.payload
+        dogs: action.payload,
       };
 
     case GET_TEMPERAMENTS:
       return {
         ...state,
-        temperament: action.payload
+        temperament: action.payload,
       };
 
     case GET_DETAIL:
       return {
         ...state,
-        detail: action.payload
+        detail: action.payload,
       };
 
     default:

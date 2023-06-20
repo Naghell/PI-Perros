@@ -6,8 +6,6 @@ const Landing = () => {
         <main className={styles.landing__container}>
             <div className={styles.landing__logo}>
                 <img alt="Logo de PerrAPI" className={styles.landing__image} src='/logo.svg'></img>
-            </div>
-            <div className={styles.landing__form}>
                 <Login/>
             </div>
         </main>
