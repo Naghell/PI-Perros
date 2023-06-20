@@ -14,7 +14,6 @@ footer p, footer a {
     transition: .25s;
     -webkit-text-stroke: 1px #fff;
     text-shadow: white 3px 3px;
-    cursor: pointer;
 }
 
 footer p, footer a:hover {

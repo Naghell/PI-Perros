@@ -3,8 +3,15 @@ import style from './Card.module.css';
 const Card = ({ id, name, image, weight, temperament }) => {
 
     if (Array.isArray(temperament)) {
-        temperament = temperament.join(", ")
+        temperament = [temperament.join(", ")]
     }
+
+    if (temperament === undefined) {
+        temperament = ' '
+    } else {
+        temperament = [...temperament + '.']
+    }
+
 
     return (
         <div className={style.card} id={id} key={id}>
@@ -13,7 +20,7 @@ const Card = ({ id, name, image, weight, temperament }) => {
             </div>
             <div className={style.card__info__container}>
                 <h1 className={style.card__name}>{name}</h1>
-                <p className={style.card__info}>{weight?.metric || weight}kg, {temperament}</p>
+                <p className={style.card__info}>{weight?.metric || weight}kg. {temperament}</p>
             </div>
         </div>
     )
