@@ -164,16 +164,7 @@ const CreateDog = () => {
                         <button
                             type="submit"
                             className={style.form__button}
-                            disabled={
-                                !dogData.name ||
-                                !dogData.minHeight ||
-                                !dogData.maxHeight ||
-                                !dogData.minWeight ||
-                                !dogData.maxWeight ||
-                                !dogData.life_span ||
-                                !dogData.temperament ||
-                                !dogData.image
-                            }
+                            disabled={errors.name || errors.temperament || errors.image || errors.minHeight || errors.maxHeight || errors.minWidth || errors.maxWidth}
                         >
                             Crear
                         </button>
@@ -183,13 +174,13 @@ const CreateDog = () => {
                     </div>
                 </form>
 
-                {dogData.temperament.map((temp) => (
-                    <div className={style.form__temperaments}>
+                <div className={style.form__temperaments}>
+                    {dogData.temperament.map((temp) => (
                         <button onClick={() => handleDelete(temp)} className={style.form__temp}>
                             {temp}
                         </button>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );

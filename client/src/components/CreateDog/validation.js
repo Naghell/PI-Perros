@@ -2,7 +2,7 @@ const validate = (dogData, setErrors) => {
     const newErrors = {};
     const imageUrlRegex = /\.(jpeg|jpg|gif|png|bmp|webp)$/i;
   
-    if (!dogData.name) {
+    if (!dogData.name || dogData.name.length > 40) {
       newErrors.name = "El nombre es inválido.";
     }
   
