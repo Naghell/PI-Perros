@@ -1,7 +1,7 @@
 import style from './Header.module.css'
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from '../SearchBar/SearchBar';
 import { useSelector } from 'react-redux';
-import { filterCreated, filterTemps } from "../../redux/actions";
+import { filterCreated, filterTemps } from '../../redux/actions';
 
 const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
     const allTemps = useSelector((state) => state.temperament);
@@ -42,7 +42,7 @@ const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
                 <a className={style.header__wrapper__add} href='/dog'>➕</a>
             </div>
         </header>
-    )
-}
+    );
+};
 
 export default Header;

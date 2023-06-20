@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import style from './Pagination.module.css';
 
 const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
@@ -9,7 +9,7 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
   useEffect(() => {
     if (currentPage > totalPages) {
       setCurrentPage(totalPages);
-    }
+    };
   }, [currentPage, totalPages]);
 
   const handleClick = (pageNumber) => {
@@ -26,15 +26,14 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
       paginated(currentPage - 1);
-    }
+    };
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
       paginated(currentPage + 1);
-
-    }
+    };
   };
 
   const handleLastPage = () => {
@@ -48,16 +47,16 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
   if (startPage < 1) {
     startPage = 1;
     endPage = Math.min(startPage + 4, totalPages);
-  }
+  };
 
   if (endPage > totalPages) {
     endPage = totalPages;
     startPage = Math.max(endPage - 4, 1);
-  }
+  };
 
   for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(i);
-  }
+  };
 
   return (
     <nav>

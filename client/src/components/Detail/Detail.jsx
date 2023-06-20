@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getDetail } from "../../redux/actions";
-import Loader from "../Loader/Loader";
-import style from "./Detail.module.css";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getDetail } from '../../redux/actions';
+import Loader from '../Loader/Loader';
+import style from './Detail.module.css';
 
 const Detail = () => {
   const { id } = useParams();

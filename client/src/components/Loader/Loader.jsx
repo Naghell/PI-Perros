@@ -5,7 +5,7 @@ const Loader = () => {
         <div className={style.loader__container}>
             <span className={style.loader}></span>
         </div>
-    )
-}
+    );
+};
 
 export default Loader;

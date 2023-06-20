@@ -3,18 +3,18 @@ import style from './Card.module.css';
 const Card = ({ id, name, image, weight, temperament }) => {
 
     if (Array.isArray(temperament)) {
-        temperament = [temperament.join(", ")]
-    }
+        temperament = [temperament.join(", ")];
+    };
 
     if (temperament === undefined) {
-        temperament = ' '
+        temperament = ' ';
     } else {
-        temperament = [...temperament + '.']
-    }
+        temperament = [...temperament + '.'];
+    };
 
     if (image === 'https://cdn2.thedogapi.com/images/undefined.jpg') {
-        image = 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*'
-    }
+        image = 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*';
+    };
 
 
     return (
@@ -27,7 +27,7 @@ const Card = ({ id, name, image, weight, temperament }) => {
                 <p className={style.card__info}>{weight?.metric || weight}kg. {temperament}</p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Card;

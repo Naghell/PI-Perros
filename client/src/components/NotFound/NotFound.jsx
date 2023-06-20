@@ -11,7 +11,7 @@ const NotFound = () => {
                 <button className={style.notfound__button}>Volver al inicio</button>
             </Link>
         </div>
-    )
-}
+    );
+};
 
 export default NotFound;

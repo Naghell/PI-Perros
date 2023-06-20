@@ -9,7 +9,7 @@ const Landing = () => {
                 <Login/>
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default Landing;

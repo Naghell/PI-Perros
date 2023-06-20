@@ -62,7 +62,7 @@ const CreateDog = () => {
         };
         dispatch(postDog(dog));
         navigate('/home');
-        alert('Perro creado!')
+        alert('Perro creado!');
     };
 
     const handleDelete = (e) => {

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, orderByName, orderByWeight, getTemperaments } from "../../redux/actions";
+import { getDogs, orderByName, orderByWeight, getTemperaments } from '../../redux/actions';
 import { Link } from 'react-router-dom';
-import Card from "../Card/Card";
-import Pagination from "../Pagination/Pagination";
-import Header from "../Header/Header";
-import Loader from "../Loader/Loader";
-import Footer from "../Footer/Footer";
+import Card from '../Card/Card';
+import Pagination from '../Pagination/Pagination';
+import Header from '../Header/Header';
+import Loader from '../Loader/Loader';
+import Footer from '../Footer/Footer';
 import style from './Home.module.css';
 
 const Home = () => {
@@ -42,7 +42,6 @@ const Home = () => {
     };
 
     const handleOrderBy = (e) => {
-        console.log(e.target.value)
         const val = e.target.value;
         dispatch(val.includes('asc') || val.includes('des') ? orderByName(val) : orderByWeight(val));
         setCurrentPage(1);
