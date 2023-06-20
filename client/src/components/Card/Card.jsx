@@ -1,4 +1,4 @@
-import styles from './Card.module.css';
+import style from './Card.module.css';
 
 const Card = ({ id, name, image, weight, temperament }) => {
 
@@ -7,10 +7,14 @@ const Card = ({ id, name, image, weight, temperament }) => {
     }
 
     return (
-        <div className={styles.card} id={id} key={id}>
-            <img className={styles.card__image} src={image?.url || image}></img>
-            <h1 className={styles.card__name}>{name}</h1>
-            <p>{weight?.metric || weight}kg, {temperament}</p>
+        <div className={style.card} id={id} key={id}>
+            <div className={style.card__image__container}>
+                <img className={style.card__image} src={image?.url || image}></img>
+            </div>
+            <div className={style.card__info__container}>
+                <h1 className={style.card__name}>{name}</h1>
+                <p className={style.card__info}>{weight?.metric || weight}kg, {temperament}</p>
+            </div>
         </div>
     )
 }

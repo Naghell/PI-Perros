@@ -6,7 +6,7 @@ header {
     background-size: 25%;
 }
 
-nav {
+.header__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,4 +66,23 @@ nav {
     padding: 0 15px;
     height: 50px;
     background-color: #e4b689;
-  }
+}
+
+.filters select {
+    position: relative;
+    font-family: Overpass, sans-serif;
+}
+
+.filter {
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid black;
+    background-color: #f8f0ea;
+    margin: 0 10px;
+}
+
+option {
+    font-family: Verdana;
+}

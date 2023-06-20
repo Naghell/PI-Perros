@@ -50,14 +50,15 @@ const Home = () => {
 
     return (
         <div>
-            {
-                isLoading ? <Loader /> :
-                    <div className={style.home__container}>
-                        <Header
-                            refresh={refresh}
-                            handleRefresh={handleRefresh}
-                            handleFilter={handleFilter}
-                            handleOrderBy={handleOrderBy} />
+            <div className={style.home__container}>
+                <Header
+                    refresh={refresh}
+                    handleRefresh={handleRefresh}
+                    handleFilter={handleFilter}
+                    handleOrderBy={handleOrderBy} />
+                {
+                    isLoading ? <Loader /> :
+
                         <div className={style.cards__container}>
                             {currentDogs.length > 0 ? (
                                 currentDogs.map((e) => (
@@ -68,18 +69,16 @@ const Home = () => {
                                     </div>
                                 ))
                             ) : (
-                                <div className={style.loading}><p>Loading...</p></div>
+                                <Loader />
                             )}
-                        </div>
-                        <div>
                             <Pagination
                                 dogsPerPage={dogsPerPage}
                                 allDogs={allDogs.length}
                                 paginated={setCurrentPage}
                             />
                         </div>
-                    </div>
-            }
+                }
+            </div>
         </div>
     );
 };

@@ -8,7 +8,7 @@ const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
 
     return (
         <header>
-            <nav>
+            <nav className={style.header__info}>
                 <a className={style.nav__link} href='/'>PerrAPI</a>
                 <img src='./refresh.svg' className={style.nav__refresh} onClick={handleRefresh}></img>
             </nav>
@@ -19,7 +19,7 @@ const Header = ({ refresh, handleRefresh, handleFilter, handleOrderBy }) => {
                 <SearchBar />
                 <div className={style.filters}>
                         <select value={refresh} className={style.filter} onChange={(e) => handleOrderBy(e)}>
-                            <option value='default' disabled>Ordenar por</option>
+                            <option value='default' hidden>Ordenar por</option>
                             <option disabled>Alfabético</option>
                             <option value='asc'>A-Z</option>
                             <option value='des'>Z-A</option>

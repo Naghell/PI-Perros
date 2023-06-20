@@ -4,12 +4,14 @@
 
 .search__input {
     width: 250px;
-    padding: 10px;
+    padding: 2px 0 0 10px;
     height: 30px;
     border-radius: 15px;
     border: 1px solid black;
     margin-right: 15px;
     transition: .25s;
+    background-color: #F8F0EA;
+    font-family: Overpass, sans-serif;
 }
 
 .search__button {
@@ -20,13 +22,12 @@
     transition: .25s;
     font-family: 'Fira Sans', sans-serif;
     font-size: .75rem;
-    color: white;
     -webkit-text-stroke: 1px black;
     background: none;
   }
 
   .search__button:hover {
-    background: white;
+    background: #F8F0EA;
     border: 1px solid black;
     box-shadow: 1px 1px black;
   }

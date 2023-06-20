@@ -1,12 +1,43 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 20px;
     height: 400px;
-    background-color: red;
+    background: rgba(248, 240, 234, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(248, 240, 234, 0.18);
 }
 
+.card:hover {
+    transition: .25s;
+    transform: translateY(-10px);
+}
+
+.card__image__container {
+    height: 275px;
+    width: 100%;
+    margin-bottom: 5px;
+}
 
 .card__image {
-    fill: aliceblue;
+    border-radius: 15px 15px 0 0;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.card__info__container {
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card__name {
+    font-size: 1.5rem;
 }
