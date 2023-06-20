@@ -5,7 +5,7 @@ nav {
   width: 100%;
 }
 
-.pageBtn {
+.pageBtn, .pageButton {
   height: 35px;
   width: 35px;
   margin: 6px;
@@ -16,7 +16,7 @@ nav {
   cursor: pointer;
 }
 
-.pageBtn:hover {
+.pageBtn:hover, .pageButton:hover {
   transition: .25s;
   transform: translateY(-5px);
 }
@@ -31,4 +31,34 @@ nav {
 
 .pagination li {
   list-style-type: none;
+}
+
+.disabled {
+  display: none;
+}
+
+.active {
+  transform: translateY(-5px);
+}
+
+@media only screen and (max-width: 899px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .pageBtn, .pageButton {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .pagination {
+    overflow: hidden;
+    flex-flow: row;
+  }
+
+  .pageButton {
+    display: none;
+  }
 }

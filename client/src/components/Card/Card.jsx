@@ -32,12 +32,12 @@ const Card = ({ id, name, image, weight, temperament }) => {
             </div>
             <div className={style.card__info__container}>
 
-                <Link to={`/home/${id}`} className={style.link}>
+                <Link to={`/home/${id}`} className={style.card__link}>
                     <h1 className={style.card__name}>{name}</h1>
                 </Link>
                 <p className={style.card__info}>{weight?.metric || weight}kg. {temperament}</p>
             </div>
-            <button onClick={handleDelete} >BORRAR</button>
+            <button className={style.card__button} onClick={handleDelete}>❌</button>
         </div>
     );
 };

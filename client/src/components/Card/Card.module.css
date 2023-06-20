@@ -43,3 +43,24 @@
     font-size: 1.5rem;
     font-family: Prompt, sans-serif;
 }
+
+.card__button {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    cursor: pointer;
+    transform: translate(250px, -385px);
+    border: none;
+    background: none;
+    margin-bottom: -100px;
+}
+
+.card__link {
+    text-decoration: none;
+    color: black;
+}
+
+.card__link:hover {
+    transition: .25s;
+    text-shadow: 0 0 3px black;
+}

@@ -63,7 +63,7 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
       <ul className={style.pagination}>
         <li>
           <button
-            className={`${style.pageBtn} ${currentPage === 1 ? style.disabled : ""}`}
+            className={`${style.pageButton} ${currentPage === 1 ? style.disabled : ""}`}
             onClick={handleFirstPage}
             disabled={currentPage === 1}
           >
@@ -72,7 +72,7 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
         </li>
         <li>
           <button
-            className={`${style.pageBtn} ${currentPage === 1 ? style.disabled : ""}`}
+            className={`${style.pageButton} ${currentPage === 1 ? style.disabled : ""}`}
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
@@ -93,7 +93,7 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
         })}
         <li>
           <button
-            className={`${style.pageBtn} ${currentPage === totalPages ? style.disabled : ""}`}
+            className={`${style.pageButton} ${currentPage === totalPages ? style.disabled : ""}`}
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >
@@ -102,7 +102,7 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
         </li>
         <li>
           <button
-            className={`${style.pageBtn} ${currentPage === totalPages ? style.disabled : ""}`}
+            className={`${style.pageButton} ${currentPage === totalPages ? style.disabled : ""}`}
             onClick={handleLastPage}
             disabled={currentPage === totalPages}
           >
