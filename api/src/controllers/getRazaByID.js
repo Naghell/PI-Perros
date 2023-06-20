@@ -1,6 +1,6 @@
-const axios = require("axios");
-const URL = "https://api.thedogapi.com";
-const { Dog } = require("../db");
+const axios = require('axios');
+const URL = 'https://api.thedogapi.com';
+const { Dog } = require('../db');
 
 const getRazaByID = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ const getRazaByID = async (req, res) => {
 
       if (!razaAPI.id) {
         throw new Error(`La raza con la ID: ${id} no existe.`);
-      }
+      };
 
       raza = {
         id: razaAPI.id,
@@ -36,7 +36,7 @@ const getRazaByID = async (req, res) => {
 
       if (!razaDB) {
         throw new Error(`La raza con la ID: ${id} no existe.`);
-      }
+      };
 
       raza = {
         id: razaDB.id,
@@ -47,12 +47,12 @@ const getRazaByID = async (req, res) => {
         life_span: razaDB.life_span,
         temperament: razaDB.temperament
       };
-    }
+    };
 
     return res.status(200).json(raza);
   } catch (error) {
     res.status(500).json({ error: error.message });
-  }
+  };
 };
 
 module.exports = getRazaByID;

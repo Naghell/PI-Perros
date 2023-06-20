@@ -25,7 +25,7 @@ export const getNameDogs = (name) => {
           image: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`
         }));
         dispatch({
-          type: 'GET_NAME_DOGS',
+          type: GET_NAME_DOGS,
           payload: dogs
         });
       } catch (error) {

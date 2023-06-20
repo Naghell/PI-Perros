@@ -14,12 +14,12 @@ const postDog = async (req, res) => {
         image,
         life_span: `${life_span} years`,
         temperament
-      }
+      },
     });
     res.status(200).json(dog);
   } catch (error) {
     return res.status(400).json({ error: error.message });
-  }
+  };
 };
 
 module.exports = postDog;

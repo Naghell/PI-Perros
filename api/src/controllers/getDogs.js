@@ -18,7 +18,7 @@ const getDogs = async (req, res) => {
     return res.status(200).json(dogs);
   } catch (error) {
     return res.status(400).json({ error: error.message });
-  }
+  };
 };
 
 module.exports = getDogs;

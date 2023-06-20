@@ -18,7 +18,7 @@ const getTemperaments = async (req, res) => {
             }
           });
         });
-      }
+      };
     });
 
     const temperaments = Array.from(temperamentsSet).sort();
@@ -26,7 +26,7 @@ const getTemperaments = async (req, res) => {
     return res.status(200).json(temperaments);
   } catch (error) {
     return res.status(500).json({ error: error.message });
-  }
+  };
 };
 
 module.exports = getTemperaments;

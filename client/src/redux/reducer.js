@@ -5,7 +5,7 @@ const initialState = {
   allDogs: [],
   dogs: [],
   temperament: [],
-  detail: [],
+  detail: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allDogs: sortedDogs,
-        dogs: sortedDogs,
+        dogs: sortedDogs
       };
 
     case FILTER_BY_TEMP:
@@ -52,7 +52,7 @@ const reducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        dogs: createdFilter,
+        dogs: createdFilter
       };
 
     case ORDER_BY_NAME:
@@ -70,7 +70,7 @@ const reducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        dogs: sortedArr,
+        dogs: sortedArr
       };
 
     case ORDER_BY_WEIGHT:
@@ -104,31 +104,31 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        dogs: orderedDogs,
+        dogs: orderedDogs
       };
 
     case GET_NAME_DOGS:
       return {
         ...state,
-        dogs: action.payload,
+        dogs: action.payload
       };
 
     case POST_DOG:
       return {
         ...state,
-        dogs: action.payload,
+        dogs: action.payload
       };
 
     case GET_TEMPERAMENTS:
       return {
         ...state,
-        temperament: action.payload,
+        temperament: action.payload
       };
 
     case GET_DETAIL:
       return {
         ...state,
-        detail: action.payload,
+        detail: action.payload
       };
 
     default:

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getDetail } from "../../redux/actions";
-import style from './Detail.module.css';
+import Loader from "../Loader/Loader";
+import style from "./Detail.module.css";
 
 const Detail = () => {
   const { id } = useParams();
@@ -15,34 +16,30 @@ const Detail = () => {
     });
   }, [dispatch, id]);
 
-  return (
+  return dog ? (
     <div className={style.detail__background}>
       <div className={style.detail__container}>
-        <Link to="/home">
-          <button className={style.detail__button}>Back</button>
-        </Link>
-        {dog ? (
-          <div>
-            <h3>{dog.name}</h3>
-            <img
-              src={dog.image.url || dog.image}
-              alt=""
-              width="300px"
-              height="300px"
-            />
-            <p>Average height: {dog.height.metric || dog.height} cm</p>
-            <p>Average weight: {dog.weight.metric || dog.weight} kg</p>
-            <p>Life-span: {dog.life_span}</p>
-            <p>Temperaments: {dog.temperament}</p>
-              
-          </div>
-        ) : (
-          <div className={style.loading}>
-            <p>Loading..</p>
-          </div>
-        )}
+        <div>
+          <h3>{dog.name}</h3>
+          <img
+            src={dog.image.url || dog.image}
+            alt=""
+            width="300px"
+            height="300px"
+          />
+          <p>Average height: {dog.height.metric || dog.height} cm</p>
+          <p>Average weight: {dog.weight.metric || dog.weight} kg</p>
+          <p>Life-span: {dog.life_span}</p>
+          <p>Temperaments: {dog.temperament}</p>
+
+          <Link to="/home">
+            <button className={style.detail__button}>Back</button>
+          </Link>
+        </div>
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 };
 

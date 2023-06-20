@@ -20,12 +20,12 @@ const getRazaByName = async (req, res) => {
   
       if (razas.length === 0) {
         throw new Error(`No se encontraron razas que coincidan con "${name}".`);
-      }
+      };
   
       return res.status(200).json(razas);
   } catch (error) {
       res.status(500).json({error: error.message});
-  }
+  };
 };
 
 module.exports = getRazaByName;
