@@ -12,11 +12,11 @@ const CreateDog = () => {
 
     const [dogData, setData] = useState({
         name: "",
-        minHeight: 0,
-        maxHeight: 0,
-        minWeight: 0,
-        maxWeight: 0,
-        life_span: 0,
+        minHeight: "",
+        maxHeight: "",
+        minWeight: "",
+        maxWeight: "",
+        life_span: "",
         image: "",
         temperament: []
     });
@@ -68,97 +68,90 @@ const CreateDog = () => {
     };
 
     return (
-        <div className={style.body}>
-            <div className={style.container}>
-                <h1>Create your Dog</h1>
-                <Link to="/home">
-                    <button className={style.btnBack}>Back</button>
-                </Link>
-                <form onSubmit={(event) => handleSubmit(event)} className={style.form} autoComplete="off">
+        <div className={style.form__background}>
+            <div className={style.form__container}>
+                <h1>Crea tu perro</h1>
+                <form onSubmit={(event) => handleSubmit(event)} className={style.form__info} autoComplete="off">
                     <div>
-                        <label>Name:</label>
+                        {errors.name && <p className={style.form__error}>{errors.name}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
                             type="text"
+                            placeholder='Nombre'
                             value={dogData.name}
                             name="name"
                             onChange={(event) => handleChange(event)}
                         />
-                        {errors.name && <p className={style.error}>{errors.name}</p>}
                     </div>
                     <div>
-                        <label>Min-Height:</label>
+                        {errors.minHeight && <p className={style.form__error}>{errors.minHeight}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
                             type="number"
+                            placeholder='Tamaño mínimo (cm)'
                             value={dogData.minHeight}
                             name="minHeight"
                             onChange={(event) => handleChange(event)}
                         />
-                        <label> cm</label>
-                        {errors.minHeight && <p className={style.error}>{errors.minHeight}</p>}
                     </div>
                     <div>
-                        <label>Max-Height:</label>
+                        {errors.maxHeight && <p className={style.form__error}>{errors.maxHeight}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
                             type="number"
+                            placeholder='Tamaño máximo (cm)'
                             value={dogData.maxHeight}
                             name="maxHeight"
                             onChange={(event) => handleChange(event)}
                         />
-                        <label> cm</label>
-                        {errors.maxHeight && <p className={style.error}>{errors.maxHeight}</p>}
                     </div>
                     <div>
-                        <label>Min-Weight:</label>
+                        {errors.minWeight && <p className={style.form__error}>{errors.minWeight}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
+                            placeholder='Peso mínimo (kg)'
                             type="number"
                             value={dogData.minWeight}
                             name="minWeight"
                             onChange={(event) => handleChange(event)}
                         />
-                        <label> kg</label>
-                        {errors.minWeight && <p className={style.error}>{errors.minWeight}</p>}
                     </div>
                     <div>
-                        <label>Max-Weight:</label>
+                        {errors.maxWeight && <p className={style.form__error}>{errors.maxWeight}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
+                            placeholder='Peso máximo (kg)'
                             type="number"
                             value={dogData.maxWeight}
                             name="maxWeight"
                             onChange={(event) => handleChange(event)}
                         />
-                        <label> kg</label>
-                        {errors.maxWeight && <p className={style.error}>{errors.maxWeight}</p>}
                     </div>
                     <div>
-                        <label>Life_span:</label>
+                        {errors.life_span && <p className={style.form__error}>{errors.life_span}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
                             type="number"
+                            placeholder='Esperanza de vida (años)'
                             value={dogData.life_span}
                             name="life_span"
                             onChange={(event) => handleChange(event)}
                         />
-                        <label> years</label>
-                        {errors.life_span && <p className={style.error}>{errors.life_span}</p>}
                     </div>
                     <div>
-                        <label>Image(url):</label>
+                        {errors.image && <p className={style.form__error}>{errors.image}</p>}
                         <input
-                            className={style.input}
+                            className={style.form__input}
                             type="text"
+                            placeholder='Imagen (url)'
                             value={dogData.image}
                             name="image"
                             onChange={(event) => handleChange(event)}
                         />
-                        {errors.image && <p className={style.error}>{errors.image}</p>}
                     </div>
-                    <select onChange={(event) => handleSelect(event)} className={style.select}>
-                        <option hidden>Temperaments</option>
+                    {errors.temperament && <p className={style.form__error}>{errors.temperament}</p>}
+                    <select onChange={(event) => handleSelect(event)} className={style.form__select}>
+                        <option hidden>Temperamentos</option>
                         {temps?.map((temp) => {
                             return (
                                 <option value={temp} key={temp}>
@@ -167,11 +160,10 @@ const CreateDog = () => {
                             );
                         })}
                     </select>
-                    {errors.temperament && <p className={style.error}>{errors.temperament}</p>}
                     <div>
                         <button
                             type="submit"
-                            className={style.btnCreate}
+                            className={style.form__button}
                             disabled={
                                 !dogData.name ||
                                 !dogData.minHeight ||
@@ -183,14 +175,17 @@ const CreateDog = () => {
                                 !dogData.image
                             }
                         >
-                            Create Dog
+                            Crear
                         </button>
+                        <Link to="/home">
+                            <button className={style.form__button}>Volver</button>
+                        </Link>
                     </div>
                 </form>
 
                 {dogData.temperament.map((temp) => (
-                    <div className={style.temperaments}>
-                        <button onClick={() => handleDelete(temp)} className={style.temps}>
+                    <div className={style.form__temperaments}>
+                        <button onClick={() => handleDelete(temp)} className={style.form__temp}>
                             {temp}
                         </button>
                     </div>
