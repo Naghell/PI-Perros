@@ -1,6 +1,14 @@
 import style from './Card.module.css';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { deleteDog } from '../../redux/actions';
 
 const Card = ({ id, name, image, weight, temperament }) => {
+    const dispatch = useDispatch();
+
+    const handleDelete = () => {
+        dispatch(deleteDog(id));
+    }
 
     if (Array.isArray(temperament)) {
         temperament = [temperament.join(", ")];
@@ -23,9 +31,13 @@ const Card = ({ id, name, image, weight, temperament }) => {
                 <img className={style.card__image} src={image?.url || image}></img>
             </div>
             <div className={style.card__info__container}>
-                <h1 className={style.card__name}>{name}</h1>
+
+                <Link to={`/home/${id}`} className={style.link}>
+                    <h1 className={style.card__name}>{name}</h1>
+                </Link>
                 <p className={style.card__info}>{weight?.metric || weight}kg. {temperament}</p>
             </div>
+            <button onClick={handleDelete} >BORRAR</button>
         </div>
     );
 };

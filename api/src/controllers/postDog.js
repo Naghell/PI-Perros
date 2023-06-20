@@ -4,7 +4,7 @@ const postDog = async (req, res) => {
   try {
     const { name, weight, height, image, life_span, temperament, createdInDb } = req.body;
     if ( !name || !weight || !height || !image || !life_span || !temperament) {
-      return res.status(400).send('Faltan datos');
+      return res.status(400).send('Faltan datos.');
     }
     const dog = await Dog.findOrCreate({
       where: {

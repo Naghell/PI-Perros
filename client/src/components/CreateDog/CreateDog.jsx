@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { postDog, getTemperaments } from "../../redux/actions";
@@ -49,7 +48,6 @@ const CreateDog = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(dogData.temperament)
         const avgHeight = Math.floor((Number(dogData.minHeight) + Number(dogData.maxHeight)) / 2);
         const avgWeight = Math.floor((Number(dogData.minWeight) + Number(dogData.maxWeight)) / 2);
         const dog = {

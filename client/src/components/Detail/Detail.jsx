@@ -20,17 +20,20 @@ const Detail = () => {
     <div className={style.detail__background}>
       <div className={style.detail__container}>
         <div>
-          <h3>{dog.name}</h3>
+          <h3 className={style.detail__title}>{dog.name}</h3>
           <img
             src={dog.image.url || dog.image}
-            alt=""
+            alt={dog.name}
             width="300px"
             height="300px"
+            className={style.detail__image}
           />
-          <p>Average height: {dog.height.metric || dog.height} cm</p>
-          <p>Average weight: {dog.weight.metric || dog.weight} kg</p>
-          <p>Life-span: {dog.life_span}</p>
-          <p>Temperaments: {dog.temperament}</p>
+          <div className={style.detail__info}>
+            <p>Tamaño promedio: {dog.height.metric || dog.height} cm</p>
+            <p>Peso promedio: {dog.weight.metric || dog.weight} kg</p>
+            <p>Esperanza de vida: {dog.life_span}</p>
+            <p>Temperamento: {dog.temperament}</p>
+          </div>
 
           <Link to="/home">
             <button className={style.detail__button}>Back</button>

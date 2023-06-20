@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS, GET_TEMPERAMENTS, POST_DOG, GET_DETAIL, FILTER_BY_TEMP,/* DELETE_DOG*/} from './action_types';
+import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS, GET_TEMPERAMENTS, POST_DOG, GET_DETAIL, FILTER_BY_TEMP, DELETE_DOG} from './action_types';
 
 export const getDogs = () => {
     return async function(dispatch){
@@ -52,19 +52,31 @@ export const getTemperaments = () => {
 
 export const postDog = (payload) => {
     return async function (dispatch) {
-        try {
-            const response = await axios.post('http://localhost:3001/dogs', payload)
-            console.log(payload);
-            console.log(response.data);
-            return dispatch({
-                type: POST_DOG,
-                payload: response.data
-            }) 
-        } catch (error) {
-            console.log(error);
-        };
+      try {
+        const response = await axios.get('http://localhost:3001/dogs');
+        const existingDogs = response.data;
+  
+        const isDuplicate = existingDogs.some((dog) => {
+          return (
+            dog.name.toLowerCase() === payload.name.toLowerCase()
+          );
+        });
+  
+        if (isDuplicate) {
+          throw new Error('Este perro ya existe');
+        }
+  
+        const postResponse = await axios.post('http://localhost:3001/dogs', payload);
+        return dispatch({
+          type: POST_DOG,
+          payload: postResponse.data,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
-};
+  };
+  
 
 export const filterCreated = (payload) => {
     return{
@@ -107,3 +119,10 @@ export const getDetail = (id) => {
         };
     };
 };
+
+export const deleteDog = (id) => {
+  return {
+      type: DELETE_DOG,
+      payload: id
+  }
+}

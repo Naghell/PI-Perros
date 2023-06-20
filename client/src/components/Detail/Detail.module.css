@@ -23,3 +23,23 @@
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+.detail__title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.detail__image {
+    border-radius: 10px;
+}
+
+.detail__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.detail__info p {
+    text-align: left !important;
+}

@@ -51,9 +51,7 @@ const Home = () => {
                             {currentDogs.length > 0 ? (
                                 currentDogs.map((e) => (
                                     <div key={e.id}>
-                                        <Link to={`/home/${e.id}`} className={style.link}>
-                                            <Card name={e.name} image={e?.image} temperament={e.temperament} weight={e.weight} />
-                                        </Link>
+                                            <Card id={e.id} name={e.name} image={e?.image} temperament={e.temperament} weight={e.weight} />
                                     </div>
                                 ))
                             ) : (

@@ -1,4 +1,4 @@
-import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS, GET_TEMPERAMENTS, POST_DOG, GET_DETAIL, FILTER_BY_TEMP } from './action_types';
+import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS, GET_TEMPERAMENTS, POST_DOG, GET_DETAIL, FILTER_BY_TEMP, DELETE_DOG } from './action_types';
 
 const initialState = {
   allDogs: [],
@@ -156,6 +156,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         detail: action.payload
       };
+
+    case DELETE_DOG:
+      const clearDogs = state.dogs.filter(dog => dog.id !== action.payload)
+      return {
+        ...state,
+        allDogs: clearDogs,
+        dogs: clearDogs
+      }
 
     default:
       return state;

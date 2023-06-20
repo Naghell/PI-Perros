@@ -43,9 +43,8 @@ const validate = (dogData, setErrors) => {
     if (!imageUrlRegex.test(dogData.image)) {
       newErrors.image = 'Debes colocar una imagen.';
     };
-  
+    
     setErrors(newErrors);
-    console.log(newErrors);
   };
   
   export default validate;
