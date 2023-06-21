@@ -106,13 +106,13 @@ option {
         justify-content: center;
         padding: 15px;
     }
-    .landing__logo {
-        flex-direction: column;
-    }
 }
 
 @media only screen and (max-width: 400px) {
-    .landing__image {
-        width: 250px;
+    .header__wrapper {
+        padding-bottom: 110px;
+    }
+    .header__logo {
+        transform: translateY(-30px);
     }
 }

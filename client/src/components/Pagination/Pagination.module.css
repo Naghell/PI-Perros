@@ -44,6 +44,7 @@ nav {
 @media only screen and (max-width: 899px) {
   .pagination {
     flex-wrap: wrap;
+    padding-top: 20px;
   }
 
   .pageBtn, .pageButton {
