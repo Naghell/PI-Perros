@@ -27,7 +27,7 @@ footer a {
 }
 
 @media only screen and (max-width: 899px) {
-  .pagination {
+  footer {
     flex-wrap: wrap;
   }
 
@@ -38,12 +38,24 @@ footer a {
 }
 
 @media only screen and (max-width: 400px) {
-  .pagination {
-    flex-wrap: wrap;
+  footer p {
+    font-size: 1rem;
+    transform: translateY(5px);
+    text-shadow: black 1px 1px;
   }
 
-  .pageBtn {
-    height: 50px;
-    width: 50px;
+  footer a {
+    font-size: 1rem;
+    margin: 0;
+    transform: translateY(-5px);
+    color: white;
+    -webkit-text-stroke: 1px black;
+    text-shadow: black 1px 1px;
+  }
+
+  footer a:hover {
+    transform: scaleX(5px);
+    -webkit-text-stroke: 1px black;
+    text-shadow: black 2px 2px;
   }
 }
