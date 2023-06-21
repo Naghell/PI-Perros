@@ -11,7 +11,10 @@ import style from './Home.module.css';
 const Home = () => {
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.dogs);
-    const [refresh, setRefresh] = useState('default');
+    const [refresh, setRefresh] = useState({
+        order: 'default',
+        filter: 'default'
+    });
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
     const dogsPerPage = 8;
@@ -31,7 +34,10 @@ const Home = () => {
     const handleRefresh = () => {
         dispatch(getDogs());
         dispatch(orderByName());
-        setRefresh('default');
+        setRefresh({
+            order: 'default',
+            filter: 'default'
+        });
         setCurrentPage(1);
     };
 

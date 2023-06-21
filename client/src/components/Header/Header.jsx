@@ -33,7 +33,7 @@ const Header = ({ refresh, handleRefresh, setRefresh, setCurrentPage }) => {
             <div className={style.header__wrapper}>
                 <SearchBar />
                 <div className={style.filters}>
-                    <select value={refresh} className={style.filter} onChange={(e) => handleOrderBy(e)}>
+                    <select value={refresh.order} className={style.filter} onChange={(e) => handleOrderBy(e)}>
                         <option value='default' hidden>Ordenar por</option>
                         <option disabled>Alfabético</option>
                         <option value='asc'>A-Z</option>
@@ -42,13 +42,13 @@ const Header = ({ refresh, handleRefresh, setRefresh, setCurrentPage }) => {
                         <option value='pesado'>Pesado</option>
                         <option value='ligero'>Ligero</option>
                     </select>
-                    <select className={style.filter} onChange={(e) => handleFilter(e.target.value, filterTemps)}>
+                    <select value={refresh.filter} className={style.filter} onChange={(e) => handleFilter(e.target.value, filterTemps)}>
                         <option value='default' hidden>Temperamentos</option>
                         {allTemps.map((e) => {
                             return <option value={e} key={e}>{e}</option>;
                         })}
                     </select>
-                    <select className={style.filter} onChange={(e) => handleFilter(e.target.value, filterCreated)}>
+                    <select value={refresh.filter} className={style.filter} onChange={(e) => handleFilter(e.target.value, filterCreated)}>
                         <option value='default'>Todos</option>
                         <option value='existing'>Existente</option>
                         <option value='created'>Creado</option>
