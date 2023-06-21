@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, getTemperaments } from '../../redux/actions';
-import { Link } from 'react-router-dom';
+import { getDogs, getTemperaments, orderByName } from '../../redux/actions';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
 import Header from '../Header/Header';
