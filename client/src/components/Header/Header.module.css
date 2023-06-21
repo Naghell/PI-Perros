@@ -82,7 +82,6 @@ header {
 }
 
 .filters select {
-    margin: 10px 10px -1px;
     position: relative;
     font-family: Overpass, sans-serif;
 }
@@ -102,6 +101,9 @@ option {
 }
 
 @media only screen and (max-width: 899px) {
+    .filters select {
+        margin: 10px 10px -1px;
+    }
     .header__wrapper {
         justify-content: center;
         padding: 15px;
