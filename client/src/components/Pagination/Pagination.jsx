@@ -63,18 +63,18 @@ const Pagination = ({ dogsPerPage, allDogs, paginated }) => {
       <ul className={style.pagination}>
         <li>
           <button
-            className={`${style.pageButton} ${currentPage === 1 ? style.disabled : ""}`}
+            className={`${style.pageButton} ${currentPage <= 1  ? style.disabled : ""}`}
             onClick={handleFirstPage}
-            disabled={currentPage === 1}
+            disabled={currentPage <= 1}
           >
             &laquo;
           </button>
         </li>
         <li>
           <button
-            className={`${style.pageButton} ${currentPage === 1 ? style.disabled : ""}`}
+            className={`${style.pageButton} ${currentPage <= 1  ? style.disabled : ""}`}
             onClick={handlePrevPage}
-            disabled={currentPage === 1}
+            disabled={currentPage <= 1}
           >
             &lt;
           </button>

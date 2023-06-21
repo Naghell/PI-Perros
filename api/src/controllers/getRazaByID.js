@@ -7,9 +7,7 @@ const getRazaByID = async (req, res) => {
     const { id } = req.params;
     let raza;
 
-    // Verificar si el ID es un número entero o un UUIDv4
     if (Number.isInteger(Number(id))) {
-      // Consultar en la API externa
       const response = await axios(`${URL}/v1/breeds/${id}`);
       const razaAPI = response.data;
 
@@ -27,7 +25,6 @@ const getRazaByID = async (req, res) => {
         temperament: razaAPI.temperament
       };
     } else {
-      // Consultar en la base de datos local
       const razaDB = await Dog.findOne({
         where: {
           id: id,

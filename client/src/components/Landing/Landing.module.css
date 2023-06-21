@@ -15,7 +15,7 @@
 .landing__logo {
     width: 100vw;
     height: 100vh;
-    background-image: url('./background.webp');
+    background-image: url('/background.webp');
     background-repeat: repeat;
     background-size: 25%;
     display: flex;

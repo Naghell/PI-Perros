@@ -4,13 +4,9 @@ const getRazaByID = require("../controllers/getRazaByID");
 const getRazaByName = require("../controllers/getRazaByName");
 const getTemperaments = require("../controllers/getTemperaments");
 const postDog = require("../controllers/postDog");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 router.get("/dogs", (req, res) => {
   const { name } = req.query;
   if (name) {

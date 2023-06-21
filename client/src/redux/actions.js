@@ -4,7 +4,7 @@ import { GET_DOGS, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_NAME_DOGS
 export const getDogs = () => {
     return async function(dispatch){
         try {
-            const response = await axios('http://localhost:3001/dogs');
+            const response = await axios('/dogs');
             return dispatch({
                 type: GET_DOGS,
                 payload: response.data
@@ -18,7 +18,7 @@ export const getDogs = () => {
 export const getNameDogs = (name) => {
     return async function(dispatch) {
       try {
-        const response = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+        const response = await axios.get(`/dogs?name=${name}`);
         const dogs = response.data.map((dog) => ({
           ...dog,
           image: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`
@@ -37,7 +37,7 @@ export const getNameDogs = (name) => {
 export const getTemperaments = () => {
     return async function (dispatch) {
         try {
-            const response = await axios('http://localhost:3001/temperaments')
+            const response = await axios('/temperaments')
             return (
                 dispatch({
                     type: GET_TEMPERAMENTS,
@@ -53,7 +53,7 @@ export const getTemperaments = () => {
 export const postDog = (payload) => {
     return async function (dispatch) {
       try {
-        const response = await axios.get('http://localhost:3001/dogs');
+        const response = await axios.get('/dogs');
         const existingDogs = response.data;
   
         const isDuplicate = existingDogs.some((dog) => {
@@ -66,7 +66,7 @@ export const postDog = (payload) => {
           throw new Error('Este perro ya existe');
         }
   
-        const postResponse = await axios.post('http://localhost:3001/dogs', payload);
+        const postResponse = await axios.post('/dogs', payload);
         return dispatch({
           type: POST_DOG,
           payload: postResponse.data,
@@ -109,7 +109,7 @@ export const orderByWeight = (payload) => {
 export const getDetail = (id) => {
     return async function (dispatch) {
         try {
-            const response = await axios('http://localhost:3001/dogs/' + id);
+            const response = await axios('/dogs/' + id);
             return dispatch({
                 type: GET_DETAIL,
                 payload: response.data

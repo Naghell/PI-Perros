@@ -2,6 +2,7 @@ import style from './Header.module.css'
 import SearchBar from '../SearchBar/SearchBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterCreated, filterTemps, orderByName, orderByWeight } from '../../redux/actions';
+import { Link } from 'react-router-dom';
 
 const Header = ({ refresh, handleRefresh, setRefresh, setCurrentPage }) => {
     const dispatch = useDispatch();
@@ -53,7 +54,9 @@ const Header = ({ refresh, handleRefresh, setRefresh, setCurrentPage }) => {
                         <option value='created'>Creado</option>
                     </select>
                 </div>
-                <a className={style.header__wrapper__add} href='/dog'>➕</a>
+                <Link className={style.header__wrapper__add} to='/dog'>
+                    <p className={style.header__wrapper__add}>➕</p>
+                </Link>
             </div>
         </header>
     );
